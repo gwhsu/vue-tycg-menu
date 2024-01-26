@@ -79,3 +79,35 @@ onMounted(() => {
   </div>
 
 </template>
+<style>
+  /* 確保頁面寬度與螢幕寬度相同，並禁止縮放 */
+  @viewport {
+    width: device-width;
+    initial-scale: 1;
+  }
+
+  /* 定義小於 600px 寬度的螢幕的樣式 */
+  @media screen and (max-width: 600px) {
+    body {
+      font-size: 18px; /* 使用較大的字體 */
+    }
+
+    /* 確保按鈕在小螢幕上看起來更大 */
+    button {
+      padding: 15px 25px;
+      font-size: 18px;
+    }
+
+    /* 簡化並堆疊導航欄 */
+    #SideNav {
+      width: 100%;
+      height: auto;
+    }
+
+    /* 調整影片輪播的大小和位置 */
+    .VideoCarousel {
+      width: 100%;
+      padding: 10px;
+    }
+  }
+</style>
