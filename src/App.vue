@@ -11,7 +11,9 @@ import { useMenuStore } from './stores/menu'
 import { storeToRefs } from 'pinia';
 const useMenu = useMenuStore()
 const { menu, showFullVideo } = storeToRefs(useMenu)
-
+const handlePopstate = () => {
+  showFullVideo.value = false;
+};
 let video = ref(null)
 
 onMounted(() => {
@@ -57,6 +59,7 @@ onMounted(() => {
         class="fixed w-full h-screen bg-black"
         @keyup.esc="showFullVideo = false"
         @keydown.left="showFullVideo = false"
+        @popstate="handlePopstate"
         tabindex="0"
     >
       <div v-if="showFullVideo">
@@ -85,7 +88,7 @@ onMounted(() => {
   /* 定義小於 600px 寬度的螢幕的樣式 */
   @media screen and (max-width: 1000px) {
     body {
-      font-size: 8px; /* 使用較大的字體 */
+      font-size: 8px; 
     }
 
     /* 確保按鈕在小螢幕上看起來更大 */
