@@ -25,9 +25,14 @@ onMounted(() => {
   <div class="fixed w-full h-screen bg-black">
 
     <div v-if="!showFullVideo" id="SideNav" class="flex flex-col z-40 items-center w-full h-[30px] relative">
-      <img class="absolute top-0 w-[35px] mt-50" src="/images/logo.png" alt="">
+      <router-link to="/lucky-draw"> <!-- Use router-link for navigation -->
+        <img class="relative top-0 w-[30px] mt-50" src="/images/logo.png" alt="">
+      </router-link>
+      <button @click="navigateToLuckyDraw" class="relative top-0 right-0 p-2 m-90 bg-white bg-opacity-50 rounded-full cursor-pointer">
+        <!-- Add a new button for lucky draw -->
+        Lucky Draw
+      </button>
     </div>
-
     <div v-if="!showFullVideo">
       <div class="fixed flex z-20 top-0 right-0 w-full h-[100%] bg-black pl-[10px] bg-clip-border">
         <div class="absolute z-30 h-[70%] left-[10px] w-[100%] right-0 top-0 bg-gradient-to-r from-black via-black" />
