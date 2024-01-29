@@ -56,6 +56,7 @@ onMounted(() => {
     <div 
         class="fixed w-full h-screen bg-black"
         @keyup.esc="showFullVideo = false"
+        @keydown.left="showFullVideo = false"
         tabindex="0"
     >
       <div v-if="showFullVideo">
