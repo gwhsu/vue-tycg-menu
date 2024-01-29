@@ -2,12 +2,6 @@
 import { onMounted, ref } from 'vue';
 import menus from './menus.json'
 
-// import Magnify from 'vue-material-design-icons/Magnify.vue';
-// import HomeOutline from 'vue-material-design-icons/HomeOutline.vue';
-// import TrendingUp from 'vue-material-design-icons/TrendingUp.vue';
-// import Television from 'vue-material-design-icons/Television.vue';
-// import MenuOutline from 'vue-material-design-icons/MenuOutline.vue';
-// import Plus from 'vue-material-design-icons/Plus.vue';
 import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue';
 
 import VideoCarousel from '@/components/VideoCarousel.vue';
