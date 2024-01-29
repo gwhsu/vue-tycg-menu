@@ -22,13 +22,13 @@ onMounted(() => {
 <template>
   <div class="fixed w-full h-screen bg-black">
 
-    <div v-if="!showFullVideo" id="SideNav" class="flex z-40 items-center w-[120px] h-screen bg-black relative">
-      <img class="absolute top-0 w-[35px] mt-10 ml-10" src="/images/logo.png" alt="">
+    <div v-if="!showFullVideo" id="SideNav" class="flex flex-col z-40 items-center w-full h-[30px] relative">
+      <img class="absolute top-0 w-[35px] mt-50" src="/images/logo.png" alt="">
     </div>
 
     <div v-if="!showFullVideo">
-      <div class="fixed flex z-20 top-0 right-0 w-full h-[50%] bg-black pl-[120px] bg-clip-border">
-        <div class="absolute z-30 h-[600px] left-[120px] w-[77%] right-0 top-0 bg-gradient-to-r from-black via-black" />
+      <div class="fixed flex z-20 top-0 right-0 w-full h-[100%] bg-black pl-[10px] bg-clip-border">
+        <div class="absolute z-30 h-[70%] left-[10px] w-[100%] right-0 top-0 bg-gradient-to-r from-black via-black" />
         
         <MenuDetails v-if="menu" :menu="menu" />
 
@@ -38,12 +38,13 @@ onMounted(() => {
           autoplay 
           loop
           class="absolute z-0 h-[600px] right-0 top-0"
+          style="transform: translateX(100px);"
         />
 
       </div>
 
-      <div class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[120px] overflow-y-auto">
-        <div class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[120px] overflow-y-auto">
+      <div class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[10px] overflow-y-auto">
+        <div class="fixed z-30 bottom-0 right-0 w-full h-[55%] pl-[10px] overflow-y-auto">
           <VideoCarousel class="pb-14 pt-14" category="Popular Menu" :menus="menus[0]" />
           <!-- <VideoCarousel class="pb-14" category="Horror Menus" :menus="menus[1]" />
           <VideoCarousel class="pb-32" category="Featured Menus" :menus="menus[2]" /> -->
@@ -64,7 +65,7 @@ onMounted(() => {
         
         </div>
         <img 
-          :src="'/images/'+menu.name+'.png'" 
+          :src="'/images/'+ menu.name +'.png'" 
           class="absolute z-0  h-full object-fit-cover"
         />
       </div>
@@ -81,27 +82,29 @@ onMounted(() => {
   }
 
   /* 定義小於 600px 寬度的螢幕的樣式 */
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
     body {
-      font-size: 18px; /* 使用較大的字體 */
+      font-size: 8px; /* 使用較大的字體 */
     }
 
     /* 確保按鈕在小螢幕上看起來更大 */
     button {
-      padding: 15px 25px;
-      font-size: 18px;
+      padding: 10px 20px;
+      font-size: 10px;
     }
-
+    img.absolute.z-0.object-fit-cover {
+      height: auto;
+    }
     /* 簡化並堆疊導航欄 */
     #SideNav {
-      width: 100%;
+      width: 10%;
       height: auto;
     }
 
     /* 調整影片輪播的大小和位置 */
     .VideoCarousel {
-      width: 100%;
-      padding: 10px;
+      width: 50%;
+      padding: 1px;
     }
   }
 </style>
