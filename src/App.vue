@@ -1,7 +1,6 @@
 <script setup>
 import { onMounted, ref } from 'vue';
 import menus from './menus.json'
-
 import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue';
 
 import VideoCarousel from '@/components/VideoCarousel.vue';
@@ -16,6 +15,16 @@ const handlePopstate = () => {
 };
 let video = ref(null)
 
+const wheel = ref(null);
+
+const items = [
+  { id: 1, name: "Banana", htmlContent: "Banana", textColor: "", background: "" },
+  { id: 2, name: "Apple", htmlContent: "Apple", textColor: "", background: "" },
+  { id: 3, name: "Orange and Purple", htmlContent: "Orange<br>and Purple", textColor: "", background: "" },
+  { id: 4, name: "Cherry", htmlContent: "Cherry", textColor: "", background: "" },
+];
+
+
 onMounted(() => {
   setTimeout(() => menu.value = menus[0][0], 100)
 })
@@ -24,14 +33,12 @@ onMounted(() => {
 <template>
   <div class="fixed w-full h-screen bg-black">
 
-    <div v-if="!showFullVideo" id="SideNav" class="flex flex-col z-40 items-center w-full h-[30px] relative">
+    <div v-if="!showFullVideo" id="SideNav" class="flex flex-col z-50 items-center w-full h-[30px] relative">
       <router-link to="/lucky-draw"> <!-- Use router-link for navigation -->
         <img class="relative top-0 w-[30px] mt-50" src="/images/logo.png" alt="">
+        
       </router-link>
-      <button @click="navigateToLuckyDraw" class="relative top-0 right-0 p-2 m-90 bg-white bg-opacity-50 rounded-full cursor-pointer">
-        <!-- Add a new button for lucky draw -->
-        Lucky Draw
-      </button>
+
     </div>
     <div v-if="!showFullVideo">
       <div class="fixed flex z-20 top-0 right-0 w-full h-[100%] bg-black pl-[10px] bg-clip-border">
@@ -63,9 +70,7 @@ onMounted(() => {
     <div 
         class="fixed w-full h-screen bg-black"
         @keyup.esc="showFullVideo = false"
-        @keydown.left="showFullVideo = false"
-        @popstate="handlePopstate"
-        tabindex="0"
+       
     >
       <div v-if="showFullVideo">
         <div @click="showFullVideo = false" class="absolute z-50 p-2 m-4 bg-white bg-opacity-50 rounded-full cursor-pointer">
@@ -85,10 +90,10 @@ onMounted(() => {
 </template>
 <style>
   /* 確保頁面寬度與螢幕寬度相同，並禁止縮放 */
-  @viewport {
+  /* @viewport {
     width: device-width;
     initial-scale: 1;
-  }
+  } */
 
   /* 定義小於 600px 寬度的螢幕的樣式 */
   @media screen and (max-width: 1000px) {
@@ -116,4 +121,12 @@ onMounted(() => {
       padding: 1px;
     }
   }
+  .lucky-draw-button {
+    background: url('/images/3.png') center/cover; /* Replace with the actual path to your image */
+    width: 20px; /* Set the width as needed */
+    height: 20px; /* Set the height as needed */
+    border: none;
+    cursor: pointer;
+  }
+  
 </style>
